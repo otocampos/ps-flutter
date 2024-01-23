@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (markerIcon == BitmapDescriptor.defaultMarker) {
-      getBytesFromAsset('assets/images/pin_user.png', 100).then((value) {
+      getBytesFromAsset('assets/images/pin_user_white.png', 100).then((value) {
         setState(() {
           markerIcon = BitmapDescriptor.fromBytes(value!);
         });
