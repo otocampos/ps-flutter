@@ -89,3 +89,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/open_sans.ttf
+    - family: OpenSansLight
+      fonts:
+        - asset: assets/fonts/open_sans_light.ttf

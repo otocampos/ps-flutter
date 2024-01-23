@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -6,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'dart:ui' as ui;
+
+import 'features/profile/presentation/views/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -75,7 +76,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Icon(Icons.person,color: Colors.white,),
               ),
               onTap: () {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()),
+                );
               },
             )
           ],
