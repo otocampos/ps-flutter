@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:entregaudium/core/models/Failure.dart';
 import 'package:entregaudium/core/networking/api_service.dart';
-import 'package:entregaudium/core/networking/dio_client.dart';
+import 'package:entregaudium/core/networking/error_handler.dart';
 import 'package:entregaudium/features/profile/data/models/base_response_model.dart';
 import 'package:entregaudium/features/profile/data/models/profile_model.dart';
 import 'package:entregaudium/features/profile/domain/entities/profile_entity.dart';
@@ -20,9 +20,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
 
       ProfileModel profileModel = BaseResponseModel.fromJson(response.data).response;
       return Right(profileModel.mapToEntity());
-    } catch (e) {
-      print(e);
-      return Left(Failure(message: "Ocorreu um erro na requisição"));
+    } on DioException catch (e) {
+    return Left(ErrorHandler.handle(e).failure);
     }
   }
 }

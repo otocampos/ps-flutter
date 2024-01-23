@@ -1,3 +1,5 @@
+import 'package:entregaudium/core/widgets/custom_toast.dart';
+import 'package:entregaudium/core/widgets/custom_toast_msg_impl.dart';
 import 'package:entregaudium/features/profile/data/repositories/profile_repository_impl.dart';
 import 'package:entregaudium/features/profile/domain/repositories/profile_repository.dart';
 import 'package:get_it/get_it.dart';

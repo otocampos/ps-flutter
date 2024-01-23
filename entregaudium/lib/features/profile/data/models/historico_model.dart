@@ -1,5 +1,5 @@
 
-import 'package:entregaudium/core/mapper_entity.dart';
+import 'package:entregaudium/core/entities/mapper_entity.dart';
 import 'package:entregaudium/features/profile/domain/entities/historico_entity.dart';
 
 
