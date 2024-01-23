@@ -7,7 +7,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'dart:ui' as ui;
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Entregaudium',
       theme: ThemeData(
-        colorScheme:  ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Entregaudium'),
@@ -32,6 +31,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
@@ -39,12 +39,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   late GoogleMapController mapController;
   BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
   final Map<String, Marker> _markers = {};
-
-
 
   final LatLng _center = const LatLng(-22.904093, -43.175293);
 
@@ -69,28 +66,42 @@ class _MyHomePageState extends State<MyHomePage> {
       _markers['user'] = marker;
     }
 
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text(widget.title, style: const TextStyle(color: Colors.white),),
-      ),
-      body: GoogleMap(
+        appBar: AppBar(
+          actions: [
+            InkWell(
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Icon(Icons.person,color: Colors.white,),
+              ),
+              onTap: () {
+
+              },
+            )
+          ],
+          backgroundColor: Colors.blue,
+          title: Text(
+            widget.title,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+        body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
             target: _center,
             zoom: 14.0,
           ),
-        markers: _markers.values.toSet(),
-      )
-    );
+          markers: _markers.values.toSet(),
+        ));
   }
-
 
   Future<Uint8List?> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
-    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
     ui.FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))?.buffer.asUint8List();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
+        ?.buffer
+        .asUint8List();
   }
 }
