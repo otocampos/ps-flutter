@@ -18,6 +18,7 @@ class ProfileModel extends DataMapper<ProfileEntity> {
 
   @override
   ProfileEntity mapToEntity() {
+    //nao deu tempo de criar funçoes separads
     var totEntregas = historico?.map((e) => e.qtd).reduce((a, b) => a! + b!);
     var totSaldo = historico?.map((e) => e.valor).reduce((a, b) => a! + b!);
     var mediaAval =
