@@ -1,15 +1,13 @@
-class Historico {
-  Historico({
-      this.quando, 
-      this.qtd, 
-      this.valor, 
-      this.avaliacao,});
+class HistoricoEntity {
+  HistoricoEntity({
+    this.quando,
+    this.qtd,
+    this.valor,
+    this.avaliacao,
+  });
 
   String? quando;
   int? qtd;
-  double? valor;
+  dynamic? valor;
   int? avaliacao;
-
-
-
 }

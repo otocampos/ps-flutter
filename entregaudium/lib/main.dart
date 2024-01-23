@@ -1,15 +1,19 @@
 import 'dart:typed_data';
 
+import 'package:entregaudium/core/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'dart:ui' as ui;
 
 import 'features/profile/presentation/views/profile_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await initAppModule();
+
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -73,7 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.person,color: Colors.white,),
+                child: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
               ),
               onTap: () {
                 Navigator.push(

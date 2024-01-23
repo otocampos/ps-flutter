@@ -11,7 +11,7 @@ class ProfileEntity {
   String? nome;
   String? cargo;
   String? descricao;
-  List<Historico>? historico;
+  List<HistoricoEntity>? historico;
 
 
 
